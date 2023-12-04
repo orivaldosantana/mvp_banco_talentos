@@ -12,7 +12,7 @@ Versões
 
 ```bash
 npx create-next-app .
- 
+
 npm install react-icons --save
 ```
 
@@ -35,3 +35,4 @@ import styles from './page.module.css'
 
 - [NextJS Documentation](https://nextjs.org/docs)
 - [Biblioteca de icones](https://react-icons.github.io/react-icons/icons/ai/)
+- [NextJS Tutorial: Setting up your database ](https://nextjs.org/learn/dashboard-app/setting-up-your-database)
