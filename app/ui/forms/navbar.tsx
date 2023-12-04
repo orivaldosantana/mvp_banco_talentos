@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { AiOutlineFileDone } from 'react-icons/ai'
+import { AiOutlineFileDone, AiOutlineFileSearch } from 'react-icons/ai'
 
 import styles from '../../page.module.css'
 
@@ -10,9 +10,11 @@ function NavBar() {
     <div className={styles.menu}>
       <nav>
         <Link href="/">
-          <AiOutlineFileDone /> <p> Cadastro</p>
+          <AiOutlineFileDone /> Cadastro
         </Link>
-        <Link href="/">Consulta</Link>
+        <Link href="/">
+          <AiOutlineFileSearch /> Consulta
+        </Link>
       </nav>
     </div>
   )
