@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { AiOutlineFileDone, AiOutlineFileSearch } from 'react-icons/ai'
 
-import styles from '../../page.module.css'
+import styles from '../page.module.css'
 
 function NavBar() {
   return (
