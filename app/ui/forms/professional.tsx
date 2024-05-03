@@ -4,7 +4,7 @@ import styles from '../../page.module.css'
 
 function Professional({ title }) {
   return (
-    <div className={styles.container}>
+    <div >
       <h2>{title}</h2>
       <form>
         <label htmlFor="nome">Nome:</label>
