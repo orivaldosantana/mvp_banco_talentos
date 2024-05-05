@@ -5,7 +5,7 @@ import Header from '../ui/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({ children }) {
+export default function PagesLayout({ children }) {
   return (
     <div>
       <div>
