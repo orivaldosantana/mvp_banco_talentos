@@ -1,7 +1,5 @@
-import { Inter } from 'next/font/google'
+// Layout padrão da aplicação
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'MVP Banco de Talentos',

@@ -1,9 +1,6 @@
-import { Inter } from 'next/font/google'
-
+// Layout for admin pages
 import NavBar from '../ui/navbar'
 import Header from '../ui/header'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function PagesLayout({ children }) {
   return (
@@ -11,11 +8,11 @@ export default function PagesLayout({ children }) {
       <div>
         <Header />
       </div>
-      <div className="mainpage">
+      <div>
         <div>
           <NavBar />
         </div>
-        <div className="cardpage">{children} </div>
+        <div>{children} </div>
       </div>
     </div>
   )
