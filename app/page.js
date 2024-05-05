@@ -4,7 +4,7 @@ import Professional from './ui/forms/professional'
 export default function Home() {
   return (
     <div className={styles.main}>
-      <Professional title="Cadastro" />
+      <h1> Página inicial!</h1>
     </div>
   )
 }
