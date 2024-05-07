@@ -1,6 +1,7 @@
 // Layout for admin pages
 import NavBar from '../ui/navbar'
 import Header from '../ui/header'
+import { Box } from '@mui/material'
 
 export default function PagesLayout({ children }) {
   return (
@@ -9,10 +10,12 @@ export default function PagesLayout({ children }) {
         <Header />
       </div>
       <div>
-        <div>
-          <NavBar />
-        </div>
-        <div>{children} </div>
+        <Box sx={{ flexDirection: 'row', display: 'flex' }}>
+          <div>
+            <NavBar />
+          </div>
+          <div>{children} </div>
+        </Box>
       </div>
     </div>
   )
