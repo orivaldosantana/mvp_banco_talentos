@@ -1,10 +1,10 @@
+import { Container } from '@mui/material'
 import React from 'react'
-
-import styles from '../../page.module.css'
+ 
 
 function Professional({ title }) {
   return (
-    <div >
+    <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
       <h2>{title}</h2>
       <form>
         <label htmlFor="nome">Nome:</label>
@@ -41,7 +41,7 @@ function Professional({ title }) {
 
         <button type="submit">Cadastrar</button>
       </form>
-    </div>
+    </Container>
   )
 }
 
