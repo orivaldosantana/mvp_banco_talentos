@@ -1,9 +1,8 @@
 :root {
-  --bg:  #e9eaff;
+  --bg: #e9eaff;
   --bg2: #fbfaff;
-  --font: #3030a1; 
+  --font: #3030a1;
   --login-bg: #e3ecfe;
-
 }
 
 html {
@@ -12,7 +11,7 @@ html {
 
 body {
   font-family: Arial, sans-serif;
-  background-color:  var(--bg);
+  background-color: var(--bg);
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -26,14 +25,14 @@ a {
 
 header {
   background-color: var(--bg2);
-  color: var(--font);  
+  color: var(--font);
   padding-top: 50px;
   padding-bottom: 25px;
   text-align: center;
-  border-bottom: #bec9f2 2px solid; 
+  border-bottom: #bec9f2 2px solid;
   width: 100%;
 }
 
 .Typography {
-  color: var(--font); 
+  color: var(--font);
 }

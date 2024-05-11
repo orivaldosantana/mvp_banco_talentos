@@ -1,8 +1,25 @@
+'use client'
 import { Box, Button, Container, TextField, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
 function Professional({ title }) {
   const textFieldBackground = '#FAFAFA'
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const data = {
+      name,
+      phone,
+      email
+    }
+
+    console.log(data)
+  }
+
   return (
     <Container
       sx={{
@@ -21,16 +38,17 @@ function Professional({ title }) {
         }}
       >
         <Typography variant="h4" sx={{ color: '#3030a1', margin: 5 }}>
-          Cadastro de Colaboradores
+          {title}
         </Typography>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <TextField
             label="Nome"
             variant="outlined"
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
             label="Telefone"
@@ -38,6 +56,7 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+            onChange={(e) => setPhone(e.target.value)}
           />
           <TextField
             label="E-mail"
@@ -45,6 +64,7 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <Button
