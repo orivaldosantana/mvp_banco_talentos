@@ -5,7 +5,12 @@ function Professional({ title }) {
   const textFieldBackground = '#FAFAFA'
   return (
     <Container
-      sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
     >
       <Box
         sx={{
