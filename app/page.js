@@ -1,10 +1,9 @@
-import styles from './page.module.css'
-import Professional from './ui/forms/professional'
+import { Typography } from '@mui/material'
 
 export default function Home() {
   return (
-    <div className={styles.main}>
-      <h1> Página inicial!</h1>
+    <div>
+      <Typography variant="h2">Página inicial!</Typography>
     </div>
   )
 }

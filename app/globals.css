@@ -26,9 +26,14 @@ a {
 
 header {
   background-color: var(--bg2);
-  color: var(--font);
-  padding: 0px;
-  padding-top: 15px;
+  color: var(--font);  
+  padding-top: 30px;
+  padding-bottom: 20px;
   text-align: center;
+  border-bottom: #bec9f2 2px solid; 
   width: 100%;
+}
+
+.Typography {
+  color: var(--font); 
 }
