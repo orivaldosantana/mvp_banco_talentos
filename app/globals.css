@@ -27,8 +27,8 @@ a {
 header {
   background-color: var(--bg2);
   color: var(--font);  
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding-top: 50px;
+  padding-bottom: 25px;
   text-align: center;
   border-bottom: #bec9f2 2px solid; 
   width: 100%;

@@ -14,7 +14,7 @@ export default function PagesLayout({ children }) {
           <div>
             <NavBar />
           </div>
-          <div>{children} </div>
+          <Box sx={{ width: '100%' }}> {children} </Box>
         </Box>
       </div>
     </div>

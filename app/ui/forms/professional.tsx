@@ -20,7 +20,7 @@ function Professional({ title }) {
           flexDirection: 'column'
         }}
       >
-        <Typography variant="h4" sx={{ color: '#3030a1', margin: 3 }}>
+        <Typography variant="h4" sx={{ color: '#3030a1', margin: 5 }}>
           Cadastro de Colaboradores
         </Typography>
 
