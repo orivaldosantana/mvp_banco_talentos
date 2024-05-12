@@ -21,6 +21,7 @@ model User {
   cellPhone String?
   profile   String
   password  String
+  knowledge String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 
 }
