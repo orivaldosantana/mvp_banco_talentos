@@ -3,3 +3,10 @@ export const sayHello = async () => {
 
   console.log('Hello')
 }
+
+export const addTest = async (fromData: FormData) => {
+  'use server'
+
+  let name = fromData.get('name')
+  console.log('addTest: ' + name)
+}
