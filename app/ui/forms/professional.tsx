@@ -1,14 +1,9 @@
-
 import { Box, Button, Container, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { addUser } from '../../lib/user/action'
- 
-
 
 function Professional({ title }) {
   const textFieldBackground = '#FAFAFA'
-
-
 
   return (
     <Container
@@ -39,7 +34,6 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-            
           />
           <TextField
             label="Telefone"
@@ -48,7 +42,6 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-        
           />
           <TextField
             label="E-mail"
@@ -57,7 +50,6 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-            
           />
 
           <Button

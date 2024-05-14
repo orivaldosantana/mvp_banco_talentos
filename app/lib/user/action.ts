@@ -22,8 +22,10 @@ export const addUser = async (formData: FormData) => {
         profile: 'COLLABORATOR'
       }
     })
+    return true // success
   } catch (error) {
     console.error(error)
+    throw new Error('Error adding user!')
   } finally {
     await prisma.$disconnect()
   }

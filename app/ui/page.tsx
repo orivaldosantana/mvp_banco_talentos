@@ -1,7 +1,6 @@
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Container, Typography } from '@mui/material'
 
-function GenericPage({ title, children }) { 
-
+function GenericPage({ title, children }) {
   return (
     <Container
       sx={{
@@ -19,11 +18,11 @@ function GenericPage({ title, children }) {
           flexDirection: 'column'
         }}
       >
-        <Typography variant="h4" sx={{ color: '#3030a1', margin: 5 }}>
+        <Typography variant="h3" sx={{ color: '#3030a1', margin: 5 }}>
           {title}
         </Typography>
         {children}
-      </Box>  
+      </Box>
     </Container>
   )
 }
