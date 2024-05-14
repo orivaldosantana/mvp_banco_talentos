@@ -1,3 +1,5 @@
+import { PrismaClient } from '@prisma/client'
+
 export const addUser = async (formData: FormData) => {
   'use server'
 
@@ -6,25 +8,23 @@ export const addUser = async (formData: FormData) => {
   let cellphone = formData.get('cellphone')
 
   console.log(`addUser ${name} ${email} ${cellphone}`)
-  /*
-  export async function getServerSideProps(context) {
+
   const prisma = new PrismaClient()
-  let user
 
   try {
     await prisma.user.create({
       data: {
-        name: name, 
-        email: email,
-        cellphone: cellphone,
+        name: name.toString(),
+        email: email.toString(),
+        cellPhone: cellphone.toString(),
         knowledge: 'none',
-        profile: 'none', 
-      },
+        password: 'none',
+        profile: 'COLLABORATOR'
+      }
     })
   } catch (error) {
     console.error(error)
   } finally {
     await prisma.$disconnect()
   }
-  */
 }
