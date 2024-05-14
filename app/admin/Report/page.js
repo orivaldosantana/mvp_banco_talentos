@@ -1,18 +1,13 @@
 import { getUserData } from '../../lib/user/data'
 import Page from '../../ui/page'
+import SimpleTable from '../../ui/user/simpletable'
 
 const ReportPage = async () => {
   const users = await getUserData()
-  console.log(users)
   return (
     <div>
       <Page title={'Relatórios'}>
-        {users.map((user) => (
-          <div key={user.id}>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-          </div>
-        ))}
+        <SimpleTable rows={users} />
       </Page>
     </div>
   )
