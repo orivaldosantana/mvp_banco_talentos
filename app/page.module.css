@@ -1,75 +1,27 @@
-.container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 500px;
-}
-
-.container h2 {
-  color: #3498db;
-}
-
-.container label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.container input,
-.container textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.container button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container button:hover {
-  background-color: #2980b9;
-}
-
-.main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-
 .menu {
   width: '100%';
   max-width: 220px;
 }
 
 .menu nav {
-  background-color: #2c3e50;
-  color: #fff;
-  padding-top: 10px;
+  background-color: var(--bg2);
+  color: var(--font);
+  padding-top: 0px;
   width: 200px;
   height: 100vh;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu nav a {
-  display: block;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  color: var(--font);
   text-indent: 1em;
   text-decoration: none;
-  padding: 10px 0;
-  border-bottom: 1px solid #fff;
+  padding: 10px 15px;
+  border-bottom: 1px solid #BEC9F2;
 }
 
 .menu nav a:hover {
-  color: #2980b9;
+  background-color: var(--login-bg);
 }

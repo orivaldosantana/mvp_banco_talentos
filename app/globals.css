@@ -1,29 +1,21 @@
+:root {
+  --bg: #e9eaff;
+  --bg2: #fbfaff;
+  --font: #3030a1;
+  --login-bg: #e3ecfe;
+}
+
 html {
   display: flex;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: var(--bg);
   display: flex;
   flex-direction: column;
   margin: 0;
   width: 100%;
-}
-
-.mainpage {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.cardpage {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 50px;
 }
 
 a {
@@ -32,9 +24,15 @@ a {
 }
 
 header {
-  background-color: #3498db;
-  color: #fff;
-  padding: 15px;
+  background-color: var(--bg2);
+  color: var(--font);
+  padding-top: 50px;
+  padding-bottom: 25px;
   text-align: center;
+  border-bottom: #bec9f2 2px solid;
   width: 100%;
+}
+
+.Typography {
+  color: var(--font);
 }

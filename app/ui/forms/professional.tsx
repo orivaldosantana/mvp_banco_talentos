@@ -1,47 +1,76 @@
-import React from 'react'
 
-import styles from '../../page.module.css'
+import { Box, Button, Container, TextField, Typography } from '@mui/material'
+import React from 'react'
+import { addUser } from '../../lib/user/action'
+ 
+
 
 function Professional({ title }) {
+  const textFieldBackground = '#FAFAFA'
+
+
+
   return (
-    <div >
-      <h2>{title}</h2>
-      <form>
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          placeholder="Digite o nome"
-          required
-        />
+    <Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}
+      >
+        <Typography variant="h4" sx={{ color: '#3030a1', margin: 5 }}>
+          {title}
+        </Typography>
 
-        <label htmlFor="telefone">Telefone:</label>
-        <input
-          type="tel"
-          id="telefone"
-          name="telefone"
-          placeholder="Digite o telefone"
-          required
-        />
+        <form action={addUser}>
+          <TextField
+            label="Nome"
+            name="name"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+            
+          />
+          <TextField
+            label="Telefone"
+            name="cellphone"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+        
+          />
+          <TextField
+            label="E-mail"
+            name="email"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
+            
+          />
 
-        <label htmlFor="email">E-mail:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Digite o e-mail"
-          required
-        />
-        <label htmlFor="experiencia">Experiência Profissional:</label>
-        <textarea id="experiencia" name="experiencia" required></textarea>
-
-        <label htmlFor="conhecimentos">Conhecimentos Prévios:</label>
-        <textarea id="conhecimentos" name="conhecimentos" required></textarea>
-
-        <button type="submit">Cadastrar</button>
-      </form>
-    </div>
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            sx={{ marginTop: 2 }}
+          >
+            Cadastrar
+          </Button>
+        </form>
+      </Box>
+    </Container>
   )
 }
 
