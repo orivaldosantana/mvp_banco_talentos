@@ -1,4 +1,16 @@
+import { PrismaClient } from '@prisma/client'
+
 export const getUserData = async () => {
-  console.log('getUsers Data 2')
-  return 'users'
+  const prisma = new PrismaClient()
+
+  try {
+    const users = await prisma.user.findMany()
+    console.log(users)
+
+    return users
+  } catch (error) {
+    console.error(error)
+  } finally {
+    await prisma.$disconnect()
+  }
 }
