@@ -1,10 +1,18 @@
+'use client'
 import { Box, Button, Container, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { addUser } from '../../lib/user/action'
+import { useActionState } from 'react'
+
+const initialState = {
+  message: ''
+}
 
 function Professional({ title }) {
-  const textFieldBackground = '#FAFAFA'
+  const [state, formAddUserAction] = useActionState(addUser, initialState)
 
+  const textFieldBackground = '#FAFAFA'
+  console.log('Professional')
   return (
     <Container
       sx={{
@@ -26,7 +34,7 @@ function Professional({ title }) {
           {title}
         </Typography>
 
-        <form action={addUser}>
+        <form action={formAddUserAction}>
           <TextField
             label="Nome"
             name="name"
@@ -60,6 +68,7 @@ function Professional({ title }) {
           >
             Cadastrar
           </Button>
+          <p> {state?.message} </p>
         </form>
       </Box>
     </Container>

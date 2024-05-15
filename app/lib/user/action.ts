@@ -1,8 +1,12 @@
+'use server'
 import { PrismaClient } from '@prisma/client'
 
-export const addUser = async (formData: FormData) => {
-  'use server'
-
+export async function addUser(
+  prevState: {
+    message: string
+  },
+  formData: FormData
+) {
   let name = formData.get('name')
   let email = formData.get('email')
   let cellphone = formData.get('cellphone')
@@ -22,10 +26,10 @@ export const addUser = async (formData: FormData) => {
         profile: 'COLLABORATOR'
       }
     })
-    return true // success
+    return { message: 'User added!' }
   } catch (error) {
     console.error(error)
-    throw new Error('Error adding user!')
+    return { message: 'Error adding user!' }
   } finally {
     await prisma.$disconnect()
   }
