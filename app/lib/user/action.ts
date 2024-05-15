@@ -26,10 +26,10 @@ export async function addUser(
         profile: 'COLLABORATOR'
       }
     })
-    return { message: 'User added!' }
+    return { message: 'Cadastro realizado com sucesso!', type: 'success' }
   } catch (error) {
     console.error(error)
-    return { message: 'Error adding user!' }
+    return { message: 'Erro ao realizar o cadastro!', type: 'error' }
   } finally {
     await prisma.$disconnect()
   }
