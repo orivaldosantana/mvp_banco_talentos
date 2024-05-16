@@ -15,8 +15,7 @@ import { useActionState } from 'react'
 import { Close } from '@mui/icons-material'
 
 const initialState = {
-  message: '',
-  type: ''
+  message: ''
 }
 
 function Professional({ title }) {
