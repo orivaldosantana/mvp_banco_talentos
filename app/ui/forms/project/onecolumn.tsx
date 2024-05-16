@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { Box } from '@mui/material'
 
-export default function SimpleTable({ rows }) {
+export default function OneColumnTable({ rows }) {
   return (
     <Box sx={{ marginTop: 4 }}>
       <TableContainer component={Paper}>
@@ -16,23 +16,19 @@ export default function SimpleTable({ rows }) {
           <TableHead>
             <TableRow sx={{ backgroundColor: '#4163BF' }}>
               <TableCell sx={{ color: '#FAFAFA' }}>
-                <b> Nome </b>
-              </TableCell>
-              <TableCell align="center" sx={{ color: '#FAFAFA' }}>
-                <b>e-mail</b>
+                <b> Título </b>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row: any) => (
               <TableRow
-                key={row.email}
+                key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.title}
                 </TableCell>
-                <TableCell align="center">{row.email}</TableCell>
               </TableRow>
             ))}
           </TableBody>
