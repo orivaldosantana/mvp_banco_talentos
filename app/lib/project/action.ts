@@ -1,31 +1,28 @@
 'use server'
 import { PrismaClient } from '@prisma/client'
 
-export async function addUser(
+export async function addProject(
   prevState: {
     message: string
   },
   formData: FormData
 ) {
-  let name = formData.get('name')
-  let email = formData.get('email')
-  let cellphone = formData.get('cellphone')
+  let title = formData.get('title')
+  let description = formData.get('description')
 
-  console.log(`addUser ${name} ${email} ${cellphone}`)
+  console.log(`addProject ${title} ${description}`)
 
   const prisma = new PrismaClient()
 
   try {
-    await prisma.user.create({
+    //salva dados no banco de dados
+    await prisma.project.create({
       data: {
-        name: name.toString(),
-        email: email.toString(),
-        cellPhone: cellphone.toString(),
-        knowledge: 'none',
-        password: 'none',
-        profile: 'COLLABORATOR'
+        title: title.toString(),
+        description: description.toString()
       }
     })
+    console.log('Projeto cadastrado com sucesso!')
     return { message: 'Cadastro realizado com sucesso!', type: 'success' }
   } catch (error) {
     console.error(error)

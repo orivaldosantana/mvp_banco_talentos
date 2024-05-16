@@ -15,13 +15,23 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String
   cellPhone String?
   profile   String
   password  String
-  knowledge String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  knowledge String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  projects  Project[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  users       User[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

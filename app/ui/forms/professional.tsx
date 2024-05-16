@@ -1,15 +1,35 @@
-
-import { Box, Button, Container, TextField, Typography } from '@mui/material'
-import React from 'react'
+'use client'
+import {
+  Alert,
+  Box,
+  Button,
+  Collapse,
+  Container,
+  IconButton,
+  TextField,
+  Typography
+} from '@mui/material'
+import React, { useEffect } from 'react'
 import { addUser } from '../../lib/user/action'
- 
+import { useActionState } from 'react'
+import { Close } from '@mui/icons-material'
 
+const initialState = {
+  message: '',
+  type: ''
+}
 
 function Professional({ title }) {
+  const [state, formAddUserAction] = useActionState(addUser, initialState)
+  const [openAlert, setOpenAlert] = React.useState(true)
+  useEffect(() => {
+    if (state?.message) {
+      setOpenAlert(true)
+    }
+  }, [state])
+
   const textFieldBackground = '#FAFAFA'
-
-
-
+  console.log('Professional')
   return (
     <Container
       sx={{
@@ -31,7 +51,7 @@ function Professional({ title }) {
           {title}
         </Typography>
 
-        <form action={addUser}>
+        <form action={formAddUserAction}>
           <TextField
             label="Nome"
             name="name"
@@ -39,7 +59,6 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-            
           />
           <TextField
             label="Telefone"
@@ -48,7 +67,6 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-        
           />
           <TextField
             label="E-mail"
@@ -57,17 +75,30 @@ function Professional({ title }) {
             fullWidth
             required
             sx={{ marginBottom: 2, backgroundColor: textFieldBackground }}
-            
           />
 
           <Button
             variant="contained"
             type="submit"
             fullWidth
-            sx={{ marginTop: 2 }}
+            sx={{ marginTop: 2, marginBottom: 4 }}
           >
             Cadastrar
           </Button>
+
+          <Collapse in={openAlert}>
+            <Alert
+              severity={state?.type}
+              variant="filled"
+              action={
+                <IconButton size="small" onClick={() => setOpenAlert(false)}>
+                  <Close />
+                </IconButton>
+              }
+            >
+              {state?.message}
+            </Alert>
+          </Collapse>
         </form>
       </Box>
     </Container>
