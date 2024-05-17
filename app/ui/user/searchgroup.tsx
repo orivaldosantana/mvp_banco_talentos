@@ -3,6 +3,8 @@
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { getManyUser } from '../../lib/user/action'
+import { Box, Button, TextField } from '@mui/material'
+import SimpleTable from './simpletable'
 
 const initalSate = {
   message: '',
@@ -21,14 +23,36 @@ function SearchButton() {
 }
 
 export default function SearchGroup() {
+  const textFieldBackground = '#FAFAFA'
   const [state, formSearchAction] = useActionState(getManyUser, initalSate)
   console.log('state is', state)
   return (
-    <form action={formSearchAction}>
-      <input type="text" name="name" placeholder="Nome" />
-      <SearchButton />
-
-      {state.users && state.users.map((u: any) => <p key={u.id}> {u.name} </p>)}
-    </form>
+    <>
+      <form action={formSearchAction}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: 4
+          }}
+        >
+          <TextField
+            label="Nome"
+            name="name"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{
+              marginRight: 2,
+              backgroundColor: textFieldBackground
+            }}
+          />
+          <Button variant="contained" type="submit">
+            Buscar
+          </Button>
+        </Box>
+      </form>
+      {state.users && <SimpleTable rows={state.users} />}
+    </>
   )
 }
