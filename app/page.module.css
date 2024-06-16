@@ -1,25 +1,27 @@
 .menu {
   width: '100%';
   max-width: 220px;
+  margin-top: 1px;
 }
 
 .menu nav {
   background-color: var(--bg2);
   color: var(--font);
-  padding-top: 0px;
+  padding-top: 2px;
   width: 200px;
   height: 100vh;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu nav a {
+  border-radius: 10px;
+
   display: flex;
   align-items: center;
   color: var(--font);
   text-indent: 1em;
   text-decoration: none;
   padding: 10px 15px;
-  border-bottom: 1px solid #BEC9F2;
 }
 
 .menu nav a:hover {
