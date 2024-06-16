@@ -20,7 +20,7 @@ const initialState = {
 
 function Professional({ title }) {
   const [state, formAddUserAction] = useFormState(addUser, initialState)
-  const [openAlert, setOpenAlert] = React.useState(true)
+  const [openAlert, setOpenAlert] = React.useState(false)
   useEffect(() => {
     if (state?.message) {
       setOpenAlert(true)
