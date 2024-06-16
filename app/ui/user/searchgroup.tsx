@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useFormState } from 'react-dom'
 import { useFormStatus } from 'react-dom'
 import { getManyUser } from '../../lib/user/action'
 import { Box, Button, TextField } from '@mui/material'
@@ -24,7 +24,7 @@ function SearchButton() {
 
 export default function SearchGroup() {
   const textFieldBackground = '#FAFAFA'
-  const [state, formSearchAction] = useActionState(getManyUser, initalSate)
+  const [state, formSearchAction] = useFormState(getManyUser, initalSate)
   console.log('state is', state)
   return (
     <>

@@ -2,7 +2,7 @@
 import { Box, Button, TextField } from '@mui/material'
 
 import { useState } from 'react'
-import { useActionState } from 'react'
+import { useFormState } from 'react-dom'
 import { addProject } from '../../lib/project/action'
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export default function FormProject() {
   const textFieldBackground = '#FAFAFA'
-  const [state, formAddProjectAction] = useActionState(addProject, initialState)
+  const [state, formAddProjectAction] = useFormState(addProject, initialState)
   const [loading, setLoading] = useState(false)
 
   return (

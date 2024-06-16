@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import React, { useEffect } from 'react'
 import { addUser } from '../../lib/user/action'
-import { useActionState } from 'react'
+import { useFormState } from 'react-dom'
 import { Close } from '@mui/icons-material'
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
 }
 
 function Professional({ title }) {
-  const [state, formAddUserAction] = useActionState(addUser, initialState)
+  const [state, formAddUserAction] = useFormState(addUser, initialState)
   const [openAlert, setOpenAlert] = React.useState(true)
   useEffect(() => {
     if (state?.message) {
