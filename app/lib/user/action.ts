@@ -34,3 +34,34 @@ export async function addUser(
     await prisma.$disconnect()
   }
 }
+
+export async function getManyUser(
+  prevState: {
+    message: string
+  },
+  formData: FormData
+) {
+  let name = formData.get('name')
+  const prisma = new PrismaClient()
+
+  try {
+    const users = await prisma.user.findMany({
+      where: {
+        name: {
+          contains: name.toString()
+        }
+      }
+    })
+
+    return {
+      message: 'Cadastro realizado com sucesso!',
+      type: 'success',
+      users: users
+    }
+  } catch (error) {
+    console.error(error)
+    return { message: 'Erro ao realizar o cadastro!', type: 'error' }
+  } finally {
+    await prisma.$disconnect()
+  }
+}

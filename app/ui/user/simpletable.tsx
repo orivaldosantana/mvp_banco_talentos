@@ -24,7 +24,7 @@ export default function SimpleTable({ rows }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row: any) => (
+            {rows?.map((row: any) => (
               <TableRow
                 key={row.email}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

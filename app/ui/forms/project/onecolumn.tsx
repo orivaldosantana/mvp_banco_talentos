@@ -21,7 +21,7 @@ export default function OneColumnTable({ rows }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row: any) => (
+            {rows?.map((row: any) => (
               <TableRow
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
