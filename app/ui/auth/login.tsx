@@ -46,7 +46,7 @@ function Login() {
           color="primary"
           href="/contract/all"
         >
-          Iniciar
+          Entrar
         </Button>
       </Paper>
     </Box>
