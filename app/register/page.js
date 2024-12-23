@@ -1,9 +1,9 @@
-import Login from './ui/auth/login'
+import Register from '../ui/auth/register'
 
 export default function Home() {
   return (
     <div>
-      <Login />
+      <Register />
     </div>
   )
 }

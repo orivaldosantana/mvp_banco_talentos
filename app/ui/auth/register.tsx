@@ -1,8 +1,6 @@
 import { Box, Button, Paper, Typography, TextField } from '@mui/material'
-import Link from 'next/link'
-import { blueGrey } from '@mui/material/colors'
 
-function Login() {
+function Register() {
   return (
     <Box
       sx={{
@@ -25,18 +23,44 @@ function Login() {
         <Typography variant="h4" sx={{ marginTop: 6 }}>
           MVP Banco de Talentos
         </Typography>
+        <Typography variant="h6" sx={{ marginTop: 2 }}>
+          Cadastro de Usuário
+        </Typography>
         <form>
           <TextField
-            label="E-mail"
-            name="email"
+            label="Nome"
+            name="name"
             variant="outlined"
             fullWidth
             required
             sx={{ marginTop: 8 }}
           />
           <TextField
+            label="E-mail"
+            name="email"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{ marginTop: 2 }}
+          />
+          <TextField
+            label="Telefone"
+            name="cellphone"
+            variant="outlined"
+            fullWidth
+            sx={{ marginTop: 2 }}
+          />
+          <TextField
             label="Senha"
             name="password"
+            variant="outlined"
+            fullWidth
+            required
+            sx={{ marginTop: 2 }}
+          />
+          <TextField
+            label="Repita a Senha"
+            name="passwordRepeat"
             variant="outlined"
             fullWidth
             required
@@ -50,20 +74,11 @@ function Login() {
           color="primary"
           href="/contract/all"
         >
-          Entrar
+          Cadastrar
         </Button>
-        <Typography
-          variant="body2"
-          sx={{ color: blueGrey[200], marginBottom: 4 }}
-        >
-          Não tem uma conta?
-          <Link href="/register">
-            <strong> Registre-se </strong>
-          </Link>
-        </Typography>
       </Paper>
     </Box>
   )
 }
 
-export default Login
+export default Register
