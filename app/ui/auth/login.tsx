@@ -37,6 +37,7 @@ function Login() {
           <TextField
             label="Senha"
             name="password"
+            type="password"
             variant="outlined"
             fullWidth
             required

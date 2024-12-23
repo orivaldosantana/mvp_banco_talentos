@@ -83,6 +83,7 @@ function Register() {
           <TextField
             label="Senha"
             name="password"
+            type="password"
             variant="outlined"
             fullWidth
             required
@@ -91,6 +92,7 @@ function Register() {
           <TextField
             label="Repita a Senha"
             name="passwordRepeat"
+            type="password"
             variant="outlined"
             fullWidth
             required

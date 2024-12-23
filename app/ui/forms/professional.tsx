@@ -10,7 +10,7 @@ import {
   Typography
 } from '@mui/material'
 import React, { useEffect } from 'react'
-import { addUser } from '../../lib/user/action'
+import { addCollaborator } from '../../lib/user/action'
 import { useFormState } from 'react-dom'
 import { Close } from '@mui/icons-material'
 
@@ -19,7 +19,10 @@ const initialState = {
 }
 
 function Professional({ title }) {
-  const [state, formAddUserAction] = useFormState(addUser, initialState)
+  const [state, formAddCollaboratorAction] = useFormState(
+    addCollaborator,
+    initialState
+  )
   const [openAlert, setOpenAlert] = React.useState(false)
   useEffect(() => {
     if (state?.message) {
@@ -50,7 +53,7 @@ function Professional({ title }) {
           {title}
         </Typography>
 
-        <form action={formAddUserAction}>
+        <form action={formAddCollaboratorAction}>
           <TextField
             label="Nome"
             name="name"
