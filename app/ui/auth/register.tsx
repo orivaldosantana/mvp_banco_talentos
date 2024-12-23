@@ -1,6 +1,36 @@
-import { Box, Button, Paper, Typography, TextField } from '@mui/material'
+'use client'
+import {
+  Box,
+  Button,
+  Paper,
+  Typography,
+  TextField,
+  Collapse,
+  Alert,
+  IconButton
+} from '@mui/material'
+import { Close } from '@mui/icons-material'
+import { addUser } from '../../lib/user/action'
+import { useFormState } from 'react-dom'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 function Register() {
+  const [state, formAddUserAction] = useFormState(addUser, undefined)
+  const [openAlert, setOpenAlert] = React.useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (state?.message) {
+      setOpenAlert(true)
+    }
+  }, [state])
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false)
+    router.push('/') // Redireciona para a página de login
+  }
+
   return (
     <Box
       sx={{
@@ -26,7 +56,7 @@ function Register() {
         <Typography variant="h6" sx={{ marginTop: 2 }}>
           Cadastro de Usuário
         </Typography>
-        <form>
+        <form action={formAddUserAction}>
           <TextField
             label="Nome"
             name="name"
@@ -66,16 +96,29 @@ function Register() {
             required
             sx={{ marginBottom: 2, marginTop: 2 }}
           />
+          <Button
+            sx={{ marginTop: 4, marginBottom: 4 }}
+            fullWidth
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
+            Cadastrar
+          </Button>
         </form>
-        <Button
-          sx={{ marginTop: 4, marginBottom: 4 }}
-          fullWidth
-          variant="contained"
-          color="primary"
-          href="/contract/all"
-        >
-          Cadastrar
-        </Button>
+        <Collapse in={openAlert}>
+          <Alert
+            severity={state?.type}
+            variant="filled"
+            action={
+              <IconButton size="small" onClick={handleCloseAlert}>
+                <Close />
+              </IconButton>
+            }
+          >
+            {state?.message}
+          </Alert>
+        </Collapse>
       </Paper>
     </Box>
   )
