@@ -13,14 +13,14 @@ export async function addUser(
   let cellphone = formData.get('cellphone')
   let password = formData.get('password')
 
-  console.log(`addUser ${name} ${email} ${cellphone} ${password}`)
+  console.log(`addUser ${name} ${email} ${cellphone}`)
 
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(password, salt)
 
-  console.log(hashedPassword)
-
   const prisma = new PrismaClient()
+
+  let objReturn = { message: 'ok', type: 'success' }
 
   try {
     await prisma.user.create({
@@ -33,13 +33,14 @@ export async function addUser(
         profile: 'COLLABORATOR'
       }
     })
-    return { message: 'Cadastro realizado com sucesso!', type: 'success' }
+    objReturn = { message: 'Cadastro realizado com sucesso!', type: 'success' }
   } catch (error) {
     console.error(error)
-    return { message: 'Erro ao realizar o cadastro!', type: 'error' }
+    objReturn = { message: 'Erro ao realizar o cadastro!', type: 'error' }
   } finally {
     await prisma.$disconnect()
   }
+  return objReturn
 }
 
 export async function addCollaborator(
@@ -55,6 +56,7 @@ export async function addCollaborator(
   console.log(`addUser ${name} ${email} ${cellphone}`)
 
   const prisma = new PrismaClient()
+  let objReturn = { message: 'ok', type: 'success' }
 
   try {
     await prisma.user.create({
@@ -67,13 +69,14 @@ export async function addCollaborator(
         profile: 'COLLABORATOR'
       }
     })
-    return { message: 'Cadastro realizado com sucesso!', type: 'success' }
+    objReturn = { message: 'Cadastro realizado com sucesso!', type: 'success' }
   } catch (error) {
     console.error(error)
-    return { message: 'Erro ao realizar o cadastro!', type: 'error' }
+    objReturn = { message: 'Erro ao realizar o cadastro!', type: 'error' }
   } finally {
     await prisma.$disconnect()
   }
+  return objReturn
 }
 
 export async function getManyUser(
@@ -85,6 +88,8 @@ export async function getManyUser(
   let name = formData.get('name')
   const prisma = new PrismaClient()
 
+  let objReturn = {}
+
   try {
     const users = await prisma.user.findMany({
       where: {
@@ -94,15 +99,16 @@ export async function getManyUser(
       }
     })
 
-    return {
+    objReturn = {
       message: 'Cadastro realizado com sucesso!',
       type: 'success',
       users: users
     }
   } catch (error) {
     console.error(error)
-    return { message: 'Erro ao realizar o cadastro!', type: 'error' }
+    objReturn = { message: 'Erro ao realizar o cadastro!', type: 'error' }
   } finally {
     await prisma.$disconnect()
   }
+  return objReturn
 }
