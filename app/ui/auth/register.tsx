@@ -28,7 +28,7 @@ function Register() {
 
   const handleCloseAlert = () => {
     setOpenAlert(false)
-    router.push('/') // Redireciona para a página de login
+    if (state?.type === 'success') router.push('/') // Redireciona para a página de login
   }
 
   return (

@@ -12,28 +12,46 @@ export async function addUser(
   let email = formData.get('email')
   let cellphone = formData.get('cellphone')
   let password = formData.get('password')
+  let passwordRepeat = formData.get('passwordRepeat')
 
   console.log(`addUser ${name} ${email} ${cellphone}`)
+
+  if (password !== passwordRepeat) {
+    return { message: 'Senhas não conferem!', type: 'error' }
+  }
 
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(password, salt)
 
   const prisma = new PrismaClient()
 
-  let objReturn = { message: 'ok', type: 'success' }
+  let objReturn = {}
 
   try {
-    await prisma.user.create({
-      data: {
-        name: name.toString(),
-        email: email.toString(),
-        cellPhone: cellphone.toString(),
-        knowledge: 'none',
-        password: hashedPassword,
-        profile: 'COLLABORATOR'
+    let user = await prisma.user.findFirst({
+      where: {
+        email: email.toString()
       }
     })
-    objReturn = { message: 'Cadastro realizado com sucesso!', type: 'success' }
+    console.log(user)
+    if (user) {
+      objReturn = { message: 'E-mail já cadastrado!', type: 'error' }
+    } else {
+      await prisma.user.create({
+        data: {
+          name: name.toString(),
+          email: email.toString(),
+          cellPhone: cellphone.toString(),
+          knowledge: 'none',
+          password: hashedPassword,
+          profile: 'COLLABORATOR'
+        }
+      })
+      objReturn = {
+        message: 'Cadastro realizado com sucesso!',
+        type: 'success'
+      }
+    }
   } catch (error) {
     console.error(error)
     objReturn = { message: 'Erro ao realizar o cadastro!', type: 'error' }

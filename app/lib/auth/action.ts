@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 
 export const login = async (formData: FormData) => {
   let email = formData.get('email')
@@ -6,23 +7,32 @@ export const login = async (formData: FormData) => {
 
   const prisma = new PrismaClient()
 
+  let objReturn = {}
+
+  const salt = await bcrypt.genSalt(10)
+  const hashedPassword = await bcrypt.hash(password, salt)
+
   try {
     let user = await prisma.user.findFirst({
       where: {
         email: email.toString(),
-        password: password.toString()
+        password: hashedPassword.toString()
       }
     })
 
     if (user) {
-      return { message: 'Usuário autenticado com sucesso!', type: 'success' }
+      objReturn = {
+        message: 'Usuário autenticado com sucesso!',
+        type: 'success'
+      }
     } else {
-      return { message: 'Usuário ou senha inválidos!', type: 'error' }
+      objReturn = { message: 'Usuário ou senha inválidos!', type: 'error' }
     }
   } catch (error) {
     console.error(error)
-    return { message: 'Erro ao realizar o login!', type: 'error' }
+    objReturn = { message: 'Erro ao realizar o login!', type: 'error' }
   } finally {
     await prisma.$disconnect()
   }
+  return objReturn
 }
