@@ -1,18 +1,9 @@
 import { Box, Button, Paper, Typography, TextField } from '@mui/material'
 import Link from 'next/link'
 import { blueGrey } from '@mui/material/colors'
-import { signIn, auth } from '../../lib/auth'
+import { handleGitHubLogin } from '../../lib/action'
 
 const Login = async () => {
-  const session = await auth()
-
-  console.log(session)
-
-  const handleGitHubLogin = async () => {
-    'use server'
-    console.log('GitHub Login')
-    await signIn('github')
-  }
   return (
     <Box
       sx={{
