@@ -1,9 +1,13 @@
 import { Box, Button, Paper, Typography, TextField } from '@mui/material'
 import Link from 'next/link'
 import { blueGrey } from '@mui/material/colors'
-import { signIn } from '../../lib/auth'
+import { signIn, auth } from '../../lib/auth'
 
-function Login() {
+const Login = async () => {
+  const session = await auth()
+
+  console.log(session)
+
   const handleGitHubLogin = async () => {
     'use server'
     console.log('GitHub Login')
