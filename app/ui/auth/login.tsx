@@ -1,8 +1,14 @@
 import { Box, Button, Paper, Typography, TextField } from '@mui/material'
 import Link from 'next/link'
 import { blueGrey } from '@mui/material/colors'
+import { signIn } from '../../lib/auth'
 
 function Login() {
+  const handleGitHubLogin = async () => {
+    'use server'
+    console.log('GitHub Login')
+    await signIn('github')
+  }
   return (
     <Box
       sx={{
@@ -25,7 +31,7 @@ function Login() {
         <Typography variant="h4" sx={{ marginTop: 6 }}>
           MVP Banco de Talentos
         </Typography>
-        <form>
+        <form action={handleGitHubLogin}>
           <TextField
             label="E-mail"
             name="email"
@@ -43,19 +49,28 @@ function Login() {
             required
             sx={{ marginBottom: 2, marginTop: 2 }}
           />
+          <Button
+            sx={{ marginTop: 4 }}
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
+            Entrar
+          </Button>
+
+          <Button
+            sx={{ marginTop: 3, marginBottom: 4 }}
+            fullWidth
+            variant="outlined"
+            color="primary"
+            type="submit"
+          >
+            Entrar com GitHub
+          </Button>
         </form>
-        <Button
-          sx={{ marginTop: 4, marginBottom: 4 }}
-          fullWidth
-          variant="contained"
-          color="primary"
-          href="/contract/all"
-        >
-          Entrar
-        </Button>
         <Typography
           variant="body2"
-          sx={{ color: blueGrey[200], marginBottom: 4 }}
+          sx={{ color: blueGrey[300], marginBottom: 4 }}
         >
           Não tem uma conta?
           <Link href="/register">
