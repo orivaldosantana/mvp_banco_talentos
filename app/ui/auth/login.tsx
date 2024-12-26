@@ -26,7 +26,7 @@ const Login = async () => {
         <Typography variant="h4" sx={{ marginTop: 6 }}>
           MVP Banco de Talentos
         </Typography>
-        <form action={handleGitHubLogin}>
+        <form>
           <TextField
             label="E-mail"
             name="email"
@@ -52,7 +52,8 @@ const Login = async () => {
           >
             Entrar
           </Button>
-
+        </form>
+        <form action={handleGitHubLogin}>
           <Button
             sx={{ marginTop: 3, marginBottom: 4 }}
             fullWidth
