@@ -2,6 +2,7 @@ import { Box, Button, Paper, Typography, TextField } from '@mui/material'
 import Link from 'next/link'
 import { blueGrey } from '@mui/material/colors'
 import { handleGitHubLogin } from '../../lib/action'
+import { handleCredentialLogin } from '../../lib/action'
 
 const Login = async () => {
   return (
@@ -26,7 +27,7 @@ const Login = async () => {
         <Typography variant="h4" sx={{ marginTop: 6 }}>
           MVP Banco de Talentos
         </Typography>
-        <form>
+        <form action={handleCredentialLogin}>
           <TextField
             label="E-mail"
             name="email"
@@ -49,6 +50,7 @@ const Login = async () => {
             fullWidth
             variant="contained"
             color="primary"
+            type="submit"
           >
             Entrar
           </Button>
