@@ -39,7 +39,12 @@ export async function handleCredentialLogin(
     console.log(`login: ${email} ${password}`)
     return { message: 'Login realizado com sucesso!', type: 'success' }
   } catch (error) {
-    //console.error(error)
-    return { message: 'Erro ao realizar o login!', type: 'error' }
+    console.error(error)
+    console.log('Erro no login\n\n\n\n\n', error.type)
+    if (error.type?.includes('CredentialsSignin')) {
+      return { message: 'E-mail ou senha inválidos!', type: 'error' }
+    }
+    //return { message: 'Erro ao realizar o login!!!', type: 'error' }
+    throw error
   }
 }

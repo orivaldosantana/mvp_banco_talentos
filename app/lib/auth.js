@@ -6,15 +6,15 @@ import bcrypt from 'bcryptjs'
 
 const loginCredential = async (credentials) => {
   console.log('credentials login: ', credentials)
-  let prisma = null
+  const prisma = new PrismaClient()
   let user = null
   try {
-    prisma = new PrismaClient()
     user = await prisma.user.findFirst({
       where: {
         email: credentials.email
       }
     })
+    await prisma.$disconnect()
 
     if (!user) {
       throw new Error('Credenciais inválidas.')
@@ -22,6 +22,7 @@ const loginCredential = async (credentials) => {
     const match = await bcrypt.compare(credentials.password, user.password)
     console.log('Match: ', match)
     if (!match) {
+      user = null
       throw new Error('Credenciais inválidas..')
     }
     //console.log('User login: ', user)
