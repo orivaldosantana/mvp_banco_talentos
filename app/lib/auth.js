@@ -24,7 +24,7 @@ const loginCredential = async (credentials) => {
     if (!match) {
       throw new Error('Credenciais inválidas..')
     }
-    console.log('User login: ', user)
+    //console.log('User login: ', user)
   } catch (error) {
     //console.error(error)
     throw new Error('Falha ao realizar o login.')
@@ -50,7 +50,7 @@ export const {
       authorize: async (credentials) => {
         try {
           const user = await loginCredential(credentials)
-          console.log('User info ', user)
+          //console.log('User info ', user)
           return user
         } catch (error) {
           console.error('Authorize error:\n\n\n', error)

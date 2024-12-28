@@ -1,8 +1,7 @@
-import { Box, Button, Paper, Typography, TextField } from '@mui/material'
+import { Box, Paper, Typography } from '@mui/material'
 import Link from 'next/link'
 import { blueGrey } from '@mui/material/colors'
-import { handleGitHubLogin } from '../../lib/action'
-import { handleCredentialLogin } from '../../lib/action'
+import LoginCredential from '../forms/login_credential'
 
 const Login = async () => {
   return (
@@ -27,45 +26,7 @@ const Login = async () => {
         <Typography variant="h4" sx={{ marginTop: 6 }}>
           MVP Banco de Talentos
         </Typography>
-        <form action={handleCredentialLogin}>
-          <TextField
-            label="E-mail"
-            name="email"
-            variant="outlined"
-            fullWidth
-            required
-            sx={{ marginTop: 8 }}
-          />
-          <TextField
-            label="Senha"
-            name="password"
-            type="password"
-            variant="outlined"
-            fullWidth
-            required
-            sx={{ marginBottom: 2, marginTop: 2 }}
-          />
-          <Button
-            sx={{ marginTop: 4 }}
-            fullWidth
-            variant="contained"
-            color="primary"
-            type="submit"
-          >
-            Entrar
-          </Button>
-        </form>
-        <form action={handleGitHubLogin}>
-          <Button
-            sx={{ marginTop: 3, marginBottom: 4 }}
-            fullWidth
-            variant="outlined"
-            color="primary"
-            type="submit"
-          >
-            Entrar com GitHub
-          </Button>
-        </form>
+        <LoginCredential />
         <Typography
           variant="body2"
           sx={{ color: blueGrey[300], marginBottom: 4 }}
