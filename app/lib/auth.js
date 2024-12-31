@@ -3,8 +3,14 @@ import GitHub from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { authConfig } from './auth.config'
 
 const loginCredential = async (credentials) => {
+  /*
+  Buscar o usuário no banco de dados, se não encontrar, lançe um erro, compare 
+  a senha informada com a senha do banco criptografada, lançe um erro se forem 
+  diferentes, se ocorrer algum erro, lançe. Ao final, retorne o usuário.
+  */
   console.log('credentials login: ', credentials)
   const prisma = new PrismaClient()
   let user = null
@@ -42,6 +48,7 @@ export const {
   signIn,
   signOut
 } = NextAuth({
+  ...authConfig,
   providers: [
     GitHub({
       clientId: process.env.GITHUB_ID,
@@ -49,6 +56,11 @@ export const {
     }),
     CredentialsProvider({
       authorize: async (credentials) => {
+        /*
+         A lógica aqui é simples, se encontrar o usuário do banco de dados e 
+         se a senha estiver correta, retorna este usuário, se ocorrer algum 
+         erro, retorna nulo
+        */
         try {
           const user = await loginCredential(credentials)
           //console.log('User info ', user)
@@ -97,6 +109,7 @@ export const {
         }
       }
       return true
-    }
+    },
+    ...authConfig.callbacks
   }
 })

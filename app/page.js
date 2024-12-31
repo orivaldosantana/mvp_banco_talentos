@@ -1,9 +1,9 @@
-import Login from './ui/auth/login'
+import { Typography } from '@mui/material'
 
 export default function Home() {
   return (
     <div>
-      <Login />
+      <Typography variant="h2">Home</Typography>
     </div>
   )
 }
