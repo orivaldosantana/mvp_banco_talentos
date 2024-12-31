@@ -9,18 +9,8 @@ import { Button } from '@mui/material'
 
 import styles from '../page.module.css'
 import { handleGitHubLogout } from '../lib/action'
-import { auth } from '../lib/auth'
-
-import { redirect } from 'next/navigation'
 
 const NavBar = async () => {
-  const session = await auth()
-
-  console.log(session)
-  if (!session) {
-    redirect('/')
-  }
-
   return (
     <div className={styles.menu}>
       <nav>
