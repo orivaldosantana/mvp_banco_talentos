@@ -21,6 +21,7 @@ export const handleGitHubLogin = async () => {
 
 export const handleGitHubLogout = async () => {
   'use server'
+  console.log('handleGitHubLogout')
   await signOut()
 }
 

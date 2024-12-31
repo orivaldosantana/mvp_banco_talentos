@@ -24,12 +24,17 @@ export const authConfig = {
       const user = auth?.user
       const isOnLoginPage = request.nextUrl?.pathname.startsWith('/login')
       const isOnAdminPage = request.nextUrl?.pathname.startsWith('/admin')
+      const isOnCollaboratorPage =
+        request.nextUrl?.pathname.startsWith('/collaborator')
 
-      if (!user) {
-        console.log('User is not authenticated')
-      }
-      //Only authenticated users can access the admin pages
+      //Only authenticated users with ADMIN profile can access the admin pages
       if (isOnAdminPage && user?.profile !== 'ADMIN') {
+        return false
+      }
+
+      //Only authenticated users can access the collaborator pages
+      if (!user && isOnCollaboratorPage) {
+        console.log('On Collaborator Page and user is not authenticated')
         return false
       }
 
@@ -38,10 +43,8 @@ export const authConfig = {
         return Response.redirect(
           new URL('/admin/collaborator', request.nextUrl)
         )
-      }
-
-      if (isOnLoginPage && user?.profile === 'COLLABORATOR') {
-        return Response.redirect(new URL('/', request.nextUrl))
+      } else if (isOnLoginPage && user?.profile === 'COLLABORATOR') {
+        return Response.redirect(new URL('/collaborator/data', request.nextUrl))
       }
 
       return true
