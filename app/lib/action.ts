@@ -35,12 +35,12 @@ export async function handleCredentialLogin(
 
   try {
     const user = await signIn('credentials', { email, password })
-    console.log('login handleCredentialLogin', user)
-    console.log(`login: ${email} ${password}`)
+    //console.log('login handleCredentialLogin', user)
+    //console.log(`login: ${email} ${password}`)
     return { message: 'Login realizado com sucesso!', type: 'success' }
   } catch (error) {
-    console.error(error)
-    console.log('Erro no login\n\n\n\n\n', error.type)
+    //console.error(error)
+    //console.log('Erro no login\n\n\n\n\n', error.type)
     if (error.type?.includes('CredentialsSignin')) {
       return { message: 'E-mail ou senha inválidos!', type: 'error' }
     }
